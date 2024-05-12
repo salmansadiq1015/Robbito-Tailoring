@@ -1,6 +1,6 @@
 import "./App.css";
 import "react-loading-skeleton/dist/skeleton.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import { useTheme } from "./utils/ThemeContext";
 import { Toaster } from "react-hot-toast";
@@ -27,6 +27,16 @@ import CreateOrder from "./pages/Order.js/CreateOrder";
 import OrderSuccessPage from "./pages/Success";
 import ServiceDetails from "./pages/ServiceDetails";
 
+function ScrollToTop() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [navigate]);
+
+  return null;
+}
+
 function App() {
   const { theme } = useTheme();
   const { auth } = useAuth();
@@ -42,6 +52,7 @@ function App() {
       data-aos-duration="1000"
     >
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />

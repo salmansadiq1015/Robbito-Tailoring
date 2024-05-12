@@ -51,7 +51,7 @@ export default function Sidebar({ hide, setHide }) {
         )}
       </div>
       {/*  */}
-      <div className="relative w-full  py-3 h-[27rem] sm:h-[27rem] pb-[4rem] sm:pb-[3rem] overflow-y-auto message">
+      <div className="relative w-full  py-3 h-[calc(100vh-7rem)] pb-[4rem] sm:pb-[3rem] overflow-y-auto message">
         <div className="relative w-full   flex flex-col gap-4 overflow-y-auto allMessages py-1 pb-6 pr-1 message">
           {/* 1 */}
           <div

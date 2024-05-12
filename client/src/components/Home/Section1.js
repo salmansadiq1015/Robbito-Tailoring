@@ -25,7 +25,7 @@ export default function Section1() {
         {/* 1 */}
         <div className="relative" data-aos="fade-down">
           <img src="home1.jpg" alt="banner" />
-          <div className="w-full h-full flex items-center justify-center ">
+          {/* <div className="w-full h-full flex items-center justify-center ">
             <span className="absolute top-[-3rem] left-[-3rem] z-10 ">
               <IoMdSettings className="h-[5rem] w-[5rem] animate text-yellow-700/50" />
             </span>
@@ -45,12 +45,12 @@ export default function Section1() {
                 Book Appointment
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
         {/* 2 */}
         <div data-aos="fade-up">
           <img src="home2.jpg" alt="banner" />
-          <div className="w-full h-full flex items-center justify-center ">
+          {/* <div className="w-full h-full flex items-center justify-center ">
             <span className="absolute bottom-[-3rem] right-[-3rem] z-10 ">
               <IoMdSettings className="h-[5rem] w-[5rem] animate text-sky-800/50" />
             </span>
@@ -69,12 +69,12 @@ export default function Section1() {
               </span>
               <button className="btn">Book Appointment</button>
             </div>
-          </div>
+          </div> */}
         </div>
         {/* 3 */}
         <div data-aos="fade-right">
           <img src="home3.jpg" alt="banner" />
-          <div className="w-full h-full flex items-center justify-center ">
+          {/* <div className="w-full h-full flex items-center justify-center ">
             <span className="absolute top-[-3rem] right-[-3rem] z-10 ">
               <IoMdSettings className=" animate text-fuchsia-700/50" />
             </span>
@@ -93,12 +93,12 @@ export default function Section1() {
               </span>
               <button className="btn">Book Appointment</button>
             </div>
-          </div>
+          </div> */}
         </div>
         {/* 4 */}
         <div data-aos="fade-left">
           <img src="home4.jpg" alt="banner" />
-          <div className="w-full h-full flex items-center justify-center ">
+          {/* <div className="w-full h-full flex items-center justify-center ">
             <span className="absolute bottom-[-3rem] left-[-3rem] z-10 ">
               <IoMdSettings className=" animate text-orange-700/50" />
             </span>
@@ -115,7 +115,7 @@ export default function Section1() {
               </span>
               <button className="btn">Book Appointment</button>
             </div>
-          </div>
+          </div> */}
         </div>
       </Carousel>
     </div>

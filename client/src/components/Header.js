@@ -51,20 +51,21 @@ const products = [
     icon: ArrowPathIcon,
   },
 ];
-const callsToAction = [
-  { name: "Watch demo", to: "#", icon: PlayCircleIcon },
-  { name: "Contact", to: "#", icon: PhoneIcon },
-];
+// const callsToAction = [
+//   { name: "Watch demo", to: "#", icon: PlayCircleIcon },
+//   { name: "Contact", to: "#", icon: PhoneIcon },
+// ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(" ");
+// }
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const [isSticky, setIsSticky] = useState(false);
   const navigate = useNavigate();
+  const [active, setActive] = useState("1");
 
   useEffect(() => {
     let timeoutId;
@@ -83,6 +84,11 @@ export default function Header() {
       clearTimeout(timeoutId);
     };
   }, []);
+
+  const handleActive = (value, link) => {
+    setActive(value);
+    navigate(link);
+  };
 
   return (
     <header
@@ -195,21 +201,53 @@ export default function Header() {
             </Transition>
           </Popover> */}
           {/* Nav Item */}
-          <Link to="/" className="text-sm font-semibold leading-6">
+          <span
+            className={`text-sm font-semibold leading-6 cursor-pointer `}
+            onClick={() => {
+              navigate("/");
+              setActive("1");
+            }}
+          >
             Home
-          </Link>
-          <Link to="/services" className="text-sm font-semibold leading-6">
+          </span>
+
+          <span
+            className={`text-sm font-semibold leading-6 cursor-pointer `}
+            onClick={() => {
+              setActive("2");
+              navigate("/services");
+            }}
+          >
             Services
-          </Link>
-          <Link to="/blogs" className="text-sm font-semibold leading-6">
+          </span>
+
+          <span
+            className={`text-sm font-semibold leading-6  cursor-pointer  `}
+            onClick={() => {
+              setActive("3");
+              navigate("/blogs");
+            }}
+            style={{ borderBottom: active === "3" ? "2px solid #8f6e00" : "" }}
+          >
             Blog & News
-          </Link>
-          <Link to="/faq" className="text-sm font-semibold leading-6">
+          </span>
+          <span
+            className={`text-sm font-semibold leading-6  cursor-pointer  `}
+            onClick={() => {
+              setActive("4");
+              navigate("/faq");
+            }}
+          >
             FAQ's
-          </Link>
-          <Link to="/contact" className="text-sm font-semibold leading-6">
+          </span>
+          <span
+            className={`text-sm font-semibold leading-6  cursor-pointer  `}
+            onClick={() => {
+              handleActive("5", "/contact");
+            }}
+          >
             Contact
-          </Link>
+          </span>
         </Popover.Group>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-5 items-center">

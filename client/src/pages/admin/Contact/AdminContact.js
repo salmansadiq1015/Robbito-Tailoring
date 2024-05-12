@@ -139,7 +139,7 @@ export default function AdminContact() {
               boxShadow=".3rem .3rem .4rem rgba(0,0,0,.3)"
               filter="drop-shadow(0rem 0rem .6rem .1rem rgb(0, 149, 255))"
               overflow={"auto"}
-              className="overflow-auto message min-w-[35rem]"
+              className="overflow-auto message min-w-[40rem]"
               sx={{
                 "& .MuiDataGrid-root": {
                   border: `2px solid  #ae880a`,

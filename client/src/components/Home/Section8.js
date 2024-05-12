@@ -20,7 +20,7 @@ export default function Section8() {
       );
 
       if (data.success) {
-        setServices(data?.blogs);
+        setServices(data?.blogs.slice(0, 6));
         setIsLoading(false);
       }
     } catch (error) {

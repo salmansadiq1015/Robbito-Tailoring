@@ -12,10 +12,10 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const { theme } = useTheme();
-  const navigate = useNavigate();
   const [isShow, setIsShow] = useState(false);
   const { auth, setAuth } = useAuth();
+  const { theme } = useTheme();
+  const navigate = useNavigate();
 
   // Handle Login
   const handleSubmit = async (e) => {

@@ -80,6 +80,19 @@ export default function Contact() {
                   onSubmit={handleForm}
                   className="flex flex-col gap-3 py-4 px-3 rounded-md border-2 border-gray-400 shadow-md "
                 >
+                  <div className="flex items-center flex-col sm:flex-row  gap-4">
+                    <span className="text-[16px] font-medium">
+                      Book an Appointment on WhatsApp
+                    </span>
+                    <Link to="https://wa.link/gv385i" target="_blank">
+                      <ImWhatsapp className="h-10 w-10 text-green-500 hover:scale-[1.07] animate-pulse hover:text-green-600 cursor-pointer transition duration-200" />
+                    </Link>
+                  </div>
+                  <div className="flex items-center justify-center w-full py-3 gap-3">
+                    <span className="border-b w-[5rem] bg-gray-500"></span>
+                    <span>OR</span>
+                    <span className="border-b w-[5rem] bg-gray-500"></span>
+                  </div>
                   <div className="inputBox w-full">
                     <input
                       type="text"
@@ -130,12 +143,9 @@ export default function Contact() {
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      justifyContent: "space-between",
+                      justifyContent: "flex-end",
                     }}
                   >
-                    <Link to="https://wa.link/gv385i" target="_blank">
-                      <ImWhatsapp className="h-10 w-10 text-green-500 hover:scale-[1.07] hover:text-green-600 cursor-pointer transition duration-200" />
-                    </Link>
                     <button
                       type="submit"
                       style={{

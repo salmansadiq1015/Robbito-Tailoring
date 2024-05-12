@@ -1,93 +1,95 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "../../utils/ThemeContext";
 import { HiScissors } from "react-icons/hi2";
+import axios from "axios";
+import Loader from "../../utils/Loader";
 
-const data = [
-  {
-    id: 1,
-    name: "Modern Man Shirts",
-    type: "man shirt",
-    description: "New popular mens coat design 2024 new collection for men",
-    image: "/design1.png",
-  },
-  {
-    id: 2,
-    name: "Modern Man Shirts",
-    type: "winter cloth",
-    description: "New popular mens coat design 2024 new collection for men",
-    image: "/design2.png",
-  },
-  {
-    id: 3,
-    name: "Modern Man Shirts",
-    type: "model design",
-    description: "New popular mens coat design 2024 new collection for men",
-    image: "/design3.png",
-  },
-  {
-    id: 4,
-    name: "Modern Man Shirts",
-    type: "mens coat",
-    description: "New popular mens coat design 2024 new collection for men",
-    image: "/design4.png",
-  },
-  {
-    id: 5,
-    name: "Modern Man Shirts",
-    type: "man shirt",
-    description: "New popular mens coat design 2024 new collection for men",
-    image: "/design5.png",
-  },
-  {
-    id: 6,
-    name: "Modern Man Shirts",
-    type: "girls cloth",
-    description: "New popular mens coat design 2024 new collection for men",
-    image: "/design6.png",
-  },
-  {
-    id: 7,
-    name: "Modern Man Shirts",
-    type: "girls cloth",
-    description: "New popular mens coat design 2024 new collection for men",
-    image: "/design7.jpg",
-  },
-  {
-    id: 8,
-    name: "Modern Man Shirts",
-    type: "girls cloth",
-    description: "New popular mens coat design 2024 new collection for men",
-    image: "/design8.jpg",
-  },
-  {
-    id: 9,
-    name: "Modern Man Shirts",
-    type: "girls cloth",
-    description: "New popular mens coat design 2024 new collection for men",
-    image: "/design9.jpg",
-  },
-  {
-    id: 10,
-    name: "Modern Man Shirts",
-    type: "model design",
-    description: "New popular mens coat design 2024 new collection for men",
-    image: "/d11.jpg",
-  },
-  {
-    id: 11,
-    name: "Modern Man Shirts",
-    type: "model design",
-    description: "New popular mens coat design 2024 new collection for men",
-    image: "/d10.avif",
-  },
-  {
-    id: 12,
-    name: "Modern Man Shirts",
-    type: "man shirt",
-    description: "New popular mens coat design 2024 new collection for men",
-    image: "/home4.jpg",
-  },
-];
+// const data = [
+//   {
+//     id: 1,
+//     name: "Modern Man Shirts",
+//     type: "man shirt",
+//     description: "New popular mens coat design 2024 new collection for men",
+//     image: "/design1.png",
+//   },
+//   {
+//     id: 2,
+//     name: "Modern Man Shirts",
+//     type: "winter cloth",
+//     description: "New popular mens coat design 2024 new collection for men",
+//     image: "/design2.png",
+//   },
+//   {
+//     id: 3,
+//     name: "Modern Man Shirts",
+//     type: "model design",
+//     description: "New popular mens coat design 2024 new collection for men",
+//     image: "/design3.png",
+//   },
+//   {
+//     id: 4,
+//     name: "Modern Man Shirts",
+//     type: "mens coat",
+//     description: "New popular mens coat design 2024 new collection for men",
+//     image: "/design4.png",
+//   },
+//   {
+//     id: 5,
+//     name: "Modern Man Shirts",
+//     type: "man shirt",
+//     description: "New popular mens coat design 2024 new collection for men",
+//     image: "/design5.png",
+//   },
+//   {
+//     id: 6,
+//     name: "Modern Man Shirts",
+//     type: "girls cloth",
+//     description: "New popular mens coat design 2024 new collection for men",
+//     image: "/design6.png",
+//   },
+//   {
+//     id: 7,
+//     name: "Modern Man Shirts",
+//     type: "girls cloth",
+//     description: "New popular mens coat design 2024 new collection for men",
+//     image: "/design7.jpg",
+//   },
+//   {
+//     id: 8,
+//     name: "Modern Man Shirts",
+//     type: "girls cloth",
+//     description: "New popular mens coat design 2024 new collection for men",
+//     image: "/design8.jpg",
+//   },
+//   {
+//     id: 9,
+//     name: "Modern Man Shirts",
+//     type: "girls cloth",
+//     description: "New popular mens coat design 2024 new collection for men",
+//     image: "/design9.jpg",
+//   },
+//   {
+//     id: 10,
+//     name: "Modern Man Shirts",
+//     type: "model design",
+//     description: "New popular mens coat design 2024 new collection for men",
+//     image: "/d11.jpg",
+//   },
+//   {
+//     id: 11,
+//     name: "Modern Man Shirts",
+//     type: "model design",
+//     description: "New popular mens coat design 2024 new collection for men",
+//     image: "/d10.avif",
+//   },
+//   {
+//     id: 12,
+//     name: "Modern Man Shirts",
+//     type: "man shirt",
+//     description: "New popular mens coat design 2024 new collection for men",
+//     image: "/home4.jpg",
+//   },
+// ];
 
 export default function Section4() {
   const { theme } = useTheme();
@@ -95,13 +97,40 @@ export default function Section4() {
   const [searchQuery, setSearchQuery] = useState("all designs");
   const [filterData, setFilterData] = useState([]);
   const [visibleItems, setVisibleItems] = useState(6);
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState([]);
+
+  // Get ALl Services
+  const getAllService = async () => {
+    setIsLoading(true);
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/v1/gallery/all/galleries`
+      );
+
+      if (data.success) {
+        console.log("Gallery:", data.gallery);
+        setData(data.gallery);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+  useEffect(() => {
+    getAllService();
+    //eslint-disable-next-line
+  }, []);
+
+  // Handle Filter
 
   const filter = () => {
     if (searchQuery === "all designs") {
       setFilterData(data);
     } else {
       const filteredData = data.filter(
-        (item) => item?.type?.toLowerCase() === searchQuery?.toLowerCase()
+        (item) => item?.category?.toLowerCase() === searchQuery?.toLowerCase()
       );
       setFilterData(filteredData);
     }
@@ -251,21 +280,43 @@ export default function Section4() {
         </button>
       </div>
       {/* Data */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-8 px-1 sm:px-8">
-        {filterData.slice(0, visibleItems).map((item) => (
-          <div className="" key={item.id}>
-            <div className="relative h-[23rem] sm:h-[26rem] object-fill w-full overflow-hidden shadow-md rounded-md">
-              <img
-                src={item?.image}
-                alt="designs"
-                className=" shadow-md rounded-md w-full h-full hover:scale-[1.07] transition-all duration-300  hover:shadow-gray-500"
-              />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {searchQuery === "all designs" ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-8 px-1 sm:px-8">
+              {data.map((item) => (
+                <div className="" key={item.id}>
+                  <div className="relative h-[23rem] sm:h-[26rem] object-fill w-full overflow-hidden shadow-md rounded-md">
+                    <img
+                      src={item?.image}
+                      alt="designs"
+                      className=" shadow-md rounded-md w-full h-full hover:scale-[1.07] transition-all duration-300  hover:shadow-gray-500"
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-        ))}
-      </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-8 px-1 sm:px-8">
+              {filterData.slice(0, visibleItems).map((item) => (
+                <div className="" key={item.id}>
+                  <div className="relative h-[23rem] sm:h-[26rem] object-fill w-full overflow-hidden shadow-md rounded-md">
+                    <img
+                      src={item?.image}
+                      alt="designs"
+                      className=" shadow-md rounded-md w-full h-full hover:scale-[1.07] transition-all duration-300  hover:shadow-gray-500"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </>
+      )}
       <div className="flex items-start justify-center mt-8">
-        {filterData.length > visibleItems && (
+        {filterData?.length > visibleItems && (
           <button className="btn font-medium" onClick={handleSeeMore}>
             See More
           </button>

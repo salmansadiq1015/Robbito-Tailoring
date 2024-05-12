@@ -279,11 +279,12 @@ export default function AllOrders() {
               boxShadow=".3rem .3rem .4rem rgba(0,0,0,.3)"
               filter="drop-shadow(0rem 0rem .6rem .1rem rgb(0, 149, 255))"
               overflow={"auto"}
-              className="overflow-auto message min-w-[40rem] sm:block"
+              className="overflow-auto message min-w-[44rem] sm:block"
               sx={{
                 "& .MuiDataGrid-root": {
                   border: `2px solid  #ae880a`,
                   outline: "none",
+                  background: "transparent",
                 },
                 "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
                   color: theme === "dark" ? "#fff" : "#000",
@@ -301,12 +302,15 @@ export default function AllOrders() {
                 },
                 "& .MuiDataGrid-cell": {
                   borderBottom: "none",
+                  background: theme === "dark" ? "#222" : "#fff",
                 },
                 "& .name-column--cell": {
                   color: theme === "dark" ? "#fff" : "#000",
                 },
                 "& .MuiDataGrid-columnHeaders": {
-                  backgroundColor: "#ae880a",
+                  backgroundColor: theme === "dark" ? "#4facfe" : "#047857",
+                  color: theme === "dark" ? "#fff" : "#000",
+                  borderBottom: "none",
                 },
                 "& .MuiDataGrid-virtualScroller": {
                   backgroundColor: theme === "dark" ? "#1f2A40" : "#F2F0F0",
@@ -341,7 +345,7 @@ export default function AllOrders() {
 
             {/* Send Message */}
             {open && (
-              <div className="fixed z-[99] top-0 left-0 bg-black/70 w-full h-full flex items-center justify-center ">
+              <div className="fixed z-[99] top-0 left-0 bg-black/70 text-gray-950 w-full h-full flex items-center justify-center ">
                 <span className="absolute top-3 right-3 ">
                   <IoClose
                     className="h-7 w-7 text-white"
@@ -424,7 +428,7 @@ export default function AllOrders() {
                           value={name1}
                           style={{ fontWeight: 400 }}
                           onChange={(e) => setName1(e.target.value)}
-                          className="bg-transparent border-2 border-gray-400  "
+                          className="bg-transparent border-2 pointer-events-none border-gray-400  "
                         />
                         <span>Full Name</span>
                       </div>
@@ -435,7 +439,7 @@ export default function AllOrders() {
                           value={email1}
                           style={{ fontWeight: 400 }}
                           onChange={(e) => setEmail1(e.target.value)}
-                          className="bg-transparent border-2 border-gray-400  "
+                          className="bg-transparent border-2 pointer-events-none border-gray-400  "
                         />
                         <span>Email Address</span>
                       </div>
@@ -449,7 +453,7 @@ export default function AllOrders() {
                           value={phone}
                           style={{ fontWeight: 400 }}
                           onChange={(e) => setPhone(e.target.value)}
-                          className="bg-transparent border-2 border-gray-400  "
+                          className="bg-transparent border-2 pointer-events-none border-gray-400  "
                         />
                         <span>Phone Number</span>
                       </div>
@@ -460,7 +464,7 @@ export default function AllOrders() {
                           value={state}
                           style={{ fontWeight: 400 }}
                           onChange={(e) => setState(e.target.value)}
-                          className="bg-transparent border-2 border-gray-400  "
+                          className="bg-transparent border-2 pointer-events-none border-gray-400  "
                         />
                         <span>State</span>
                       </div>
@@ -473,7 +477,7 @@ export default function AllOrders() {
                           value={country}
                           style={{ fontWeight: 400 }}
                           onChange={(e) => setCountry(e.target.value)}
-                          className="bg-transparent border-2 border-gray-400  "
+                          className="bg-transparent border-2 pointer-events-none border-gray-400  "
                         />
                         <span>Country</span>
                       </div>
@@ -484,7 +488,7 @@ export default function AllOrders() {
                           value={postalCode}
                           style={{ fontWeight: 400 }}
                           onChange={(e) => setPostalCode(e.target.value)}
-                          className="bg-transparent border-2 border-gray-400  "
+                          className="bg-transparent border-2 pointer-events-none border-gray-400  "
                         />
                         <span>Postal Code </span>
                       </div>
@@ -496,7 +500,7 @@ export default function AllOrders() {
                         value={address}
                         style={{ fontWeight: 400 }}
                         onChange={(e) => setAddress(e.target.value)}
-                        className="bg-transparent border-2 border-gray-400  "
+                        className="bg-transparent border-2 pointer-events-none border-gray-400  "
                       />
                       <span>Permanent Address</span>
                     </div>
@@ -506,7 +510,7 @@ export default function AllOrders() {
                         <Link
                           to={imageUrl}
                           key={index}
-                          className="relative w-[9rem] h-[8rem]  overflow-hidden border-2 border-gray-300  shadow-gray-300 filter hover:drop-shadow-md rounded-md  shadow-md object-fill hover:shadow-xl transition duration-100"
+                          className="relative w-[7rem] h-[7rem] p-2  overflow-hidden border-2 border-gray-300  shadow-gray-300 filter hover:drop-shadow-md rounded-md  shadow-md object-fill hover:shadow-xl transition duration-100"
                           target="_blank"
                         >
                           <img
