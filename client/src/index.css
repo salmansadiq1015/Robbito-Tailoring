@@ -54,3 +54,15 @@ blockquote,
 *::-webkit-scrollbar-track {
   width: 0.4rem;
 }
+
+.css-n3fyjk-MuiDataGrid-root .MuiDataGrid-columnHeaderTitleContainer,
+.css-n3fyjk-MuiDataGrid-root .MuiDataGrid-columnHeader--sortable {
+  color: #fff !important;
+  background: #846500 !important;
+}
+
+.css-1pmk00y-MuiDataGrid-columnHeaders,
+.MuiDataGrid-topContainer,
+.MuiDataGrid-columnHeaders {
+  background: #846500 !important;
+}
