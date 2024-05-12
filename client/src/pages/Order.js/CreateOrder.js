@@ -10,7 +10,7 @@ import { useTheme } from "../../utils/ThemeContext";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { TbLoader3 } from "react-icons/tb";
 import { IoClose } from "react-icons/io5";
-import FileViewer from "react-file-viewer";
+// import FileViewer from "react-file-viewer";
 
 export default function CreateOrder() {
   const [name, setName] = useState("");
@@ -290,11 +290,11 @@ export default function CreateOrder() {
               />
             </span>
             <div className="py-5 px-4">
-              <FileViewer
-                fileType="url"
-                filePath={url}
-                onError={(e) => console.log("Error:", e)}
-              />
+              // <FileViewer
+              //   fileType="url"
+              //   filePath={url}
+              //   onError={(e) => console.log("Error:", e)}
+              // />
             </div>
           </div>
         )}
