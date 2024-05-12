@@ -177,13 +177,13 @@ export default function Footer() {
           </span>
 
           <div className="flex items-center gap-6 mt-6">
-            <Link to="#">
+            <Link to="https://www.facebook.com/Robbito.Official/">
               <FaFacebookSquare className="h-10 w-10 text-blue-600 hover:text-blue-700 hover:scale-[1.07] transition duration-200" />
             </Link>
             <Link to="https://wa.link/gv385i">
               <FaSquareWhatsapp className="h-10 w-10 text-green-500 hover:scale-[1.07] hover:text-green-600 transition duration-200" />
             </Link>
-            <Link to="#">
+            <Link to="https://www.instagram.com/Robbito.Official/">
               <FaSquareInstagram className="h-10 w-10 text-pink-600 hover:text-pink-700 hover:scale-[1.07] transition duration-200" />
             </Link>
           </div>
@@ -237,7 +237,7 @@ export default function Footer() {
         {/* Mobile Screen */}
         <div className="flex flex-col items-center justify-center gap-1  sm:hidden">
           <div className="flex items-center gap-6 mt-6">
-            <Link to="#">
+            <Link to="https://www.facebook.com/Robbito.Official/">
               <FaFacebookSquare className="h-10 w-10 text-blue-600 hover:text-blue-700 hover:scale-[1.07] transition duration-200" />
             </Link>
 
@@ -245,7 +245,7 @@ export default function Footer() {
               <FaSquareWhatsapp className="h-10 w-10 text-green-500 hover:scale-[1.07] hover:text-green-600 transition duration-200" />
             </Link>
 
-            <Link to="#">
+            <Link to="https://www.instagram.com/Robbito.Official/">
               <FaSquareInstagram className="h-10 w-10 text-pink-600 hover:text-pink-700 hover:scale-[1.07] transition duration-200" />
             </Link>
           </div>
