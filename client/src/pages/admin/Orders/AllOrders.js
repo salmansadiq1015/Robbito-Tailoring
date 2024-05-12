@@ -309,7 +309,7 @@ export default function AllOrders() {
                 },
                 "& .MuiDataGrid-columnHeaders": {
                   backgroundColor: theme === "dark" ? "#4facfe" : "#047857",
-                  color: theme === "dark" ? "#fff" : "#000",
+                  color: "#000",
                   borderBottom: "none",
                 },
                 "& .MuiDataGrid-virtualScroller": {

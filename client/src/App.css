@@ -12,8 +12,10 @@
   box-shadow: 0.3rem 0.3rem 0.2rem rgba(0, 0, 0, 0.3);
 }
 
-.css-n3fyjk-MuiDataGrid-root .MuiDataGrid-columnHeaderTitleContainer {
-  color: #111;
+.css-n3fyjk-MuiDataGrid-root .MuiDataGrid-columnHeaderTitleContainer,
+.css-n3fyjk-MuiDataGrid-root .MuiDataGrid-columnHeader--sortable {
+  color: #fff !important;
+  background: #846500 !important;
 }
 
 .css-1pmk00y-MuiDataGrid-columnHeaders,
