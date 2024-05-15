@@ -37,7 +37,7 @@ export default function Faq() {
     <Layout>
       <div className="w-full min-h-screen pt-[2rem] pb-[3rem] px-2 sm:px-6">
         <div className="flex flex-col gap-2 ">
-          <h1 className="text-4xl sm:text-3xl font-semibold sm:font-bold text-center text-gray-900">
+          <h1 className="text-3xl sm:text-4xl heading font-semibold sm:font-bold text-center ">
             Frequently Asked Questions
           </h1>
           <span className="text-[15px] font-medium text-center">

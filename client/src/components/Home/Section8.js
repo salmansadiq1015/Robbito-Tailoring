@@ -35,7 +35,7 @@ export default function Section8() {
   return (
     <div className="w-full min-h-[8vh] py-4 px-4 relative overscroll-y-auto scroll pb-[8rem]">
       <div className="flex items-center justify-center flex-col gap-4 w-full ">
-        <h1 className="font-semibold text-center text-2xl sm:text-3xl ">
+        <h1 className="font-semibold text-center text-3xl sm:text-4xl heading ">
           All Blogs / News
         </h1>
         <div className="relative flex items-center justify-center gap-[1rem]">

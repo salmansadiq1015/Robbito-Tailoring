@@ -148,11 +148,11 @@ export default function Section4() {
   return (
     <div className="w-full min-h-screen py-6 px-4">
       <div className="flex flex-col items-center justify-center">
-        <h3 className="text-lg font-medium text-[#ae880a] text-center">
+        <h3 className="text-lg font-medium heading text-[#ae880a] text-center">
           TAILOR MODEL GALLERY
         </h3>
         <h2
-          className={` text-2xl sm:text-5xl font-semibold text-center capitalize mt-3 ${
+          className={` text-2xl sm:text-5xl heading font-semibold text-center capitalize mt-3 ${
             theme === "dark" ? "text-white" : "text-black"
           }`}
         >

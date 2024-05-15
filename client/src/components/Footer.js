@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "../utils/ThemeContext";
-import { FaUser } from "react-icons/fa";
+import { FaInstagram, FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneVolume } from "react-icons/fa6";
@@ -171,20 +171,25 @@ export default function Footer() {
               theme === "dark" ? "text-gray-200" : " text-gray-500"
             } `}
           >
-            Transform your look with Robbito: Where Hamid Saeed's mastery of
-            image consultancy converges with bespoke sophistication, redefining
-            your style journey.
+            Transform your look with Robbito: Bespoke Tailoring done to
+            perfection by offering in depth craftsmanship.
           </span>
 
           <div className="flex items-center gap-6 mt-6">
-            <Link to="https://www.facebook.com/Robbito.Official/">
+            <Link
+              to="/https://www.facebook.com/Robbito.Official"
+              target="_blank"
+            >
               <FaFacebookSquare className="h-10 w-10 text-blue-600 hover:text-blue-700 hover:scale-[1.07] transition duration-200" />
             </Link>
-            <Link to="https://wa.link/gv385i">
-              <FaSquareWhatsapp className="h-10 w-10 text-green-500 hover:scale-[1.07] hover:text-green-600 transition duration-200" />
+            <Link to="https://wa.link/gv385i" target="_blank">
+              <FaSquareWhatsapp className="h-10 w-10 text-green-400 hover:scale-[1.07] hover:text-green-500 transition duration-200" />
             </Link>
-            <Link to="https://www.instagram.com/Robbito.Official/">
-              <FaSquareInstagram className="h-10 w-10 text-pink-600 hover:text-pink-700 hover:scale-[1.07] transition duration-200" />
+            <Link
+              to="/https://www.instagram.com/Robbito.Official"
+              target="_blank"
+            >
+              <FaInstagram className="h-10 w-10 bg-gradient-to-br py-[2px] text-white rounded-lg from-fuchsia-700 via-pink-600 to-orange-400 hover:scale-[1.07] transition duration-200" />
             </Link>
           </div>
 
@@ -237,16 +242,22 @@ export default function Footer() {
         {/* Mobile Screen */}
         <div className="flex flex-col items-center justify-center gap-1  sm:hidden">
           <div className="flex items-center gap-6 mt-6">
-            <Link to="https://www.facebook.com/Robbito.Official/">
+            <Link
+              to="/https://www.facebook.com/Robbito.Official"
+              target="_blank"
+            >
               <FaFacebookSquare className="h-10 w-10 text-blue-600 hover:text-blue-700 hover:scale-[1.07] transition duration-200" />
             </Link>
 
-            <Link to="https://wa.link/gv385i">
+            <Link to="https://wa.link/gv385i" target="_blank">
               <FaSquareWhatsapp className="h-10 w-10 text-green-500 hover:scale-[1.07] hover:text-green-600 transition duration-200" />
             </Link>
 
-            <Link to="https://www.instagram.com/Robbito.Official/">
-              <FaSquareInstagram className="h-10 w-10 text-pink-600 hover:text-pink-700 hover:scale-[1.07] transition duration-200" />
+            <Link
+              to="/https://www.instagram.com/Robbito.Official"
+              target="_blank"
+            >
+              <FaInstagram className="h-10 w-10 bg-gradient-to-br py-[2px] rounded-lg text-white from-blue-500 via-pink-600 to-orange-400 hover:scale-[1.07] transition duration-200" />
             </Link>
           </div>
 

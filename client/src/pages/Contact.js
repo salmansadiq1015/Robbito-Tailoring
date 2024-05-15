@@ -48,7 +48,7 @@ export default function Contact() {
             <div className="contact-header">
               <div className="flex flex-col gap-1">
                 <h3
-                  className="text-3xl sm:text-4xl font-semibold sm:font-bold text-center"
+                  className="text-3xl heading sm:text-4xl font-bold text-center"
                   style={{
                     color: " #ae880a",
                   }}

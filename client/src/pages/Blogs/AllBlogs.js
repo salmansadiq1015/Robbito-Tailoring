@@ -36,7 +36,7 @@ export default function AllBlogs() {
     <Layout>
       <div className="w-full min-h-screen py-4 px-4 relative overscroll-y-auto scroll pb-[8rem]">
         <div className="flex  items-start sm:items-center justify-start gap-4 sm:justify-between flex-col sm:flex-row">
-          <h1 className="font-semibold text-2xl sm:text-3xl ">
+          <h1 className="font-semibold text-3xl sm:text-4xl heading">
             All Blogs / News
           </h1>
         </div>

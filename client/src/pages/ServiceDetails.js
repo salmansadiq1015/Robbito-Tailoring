@@ -73,7 +73,7 @@ export default function ServiceDetails() {
             <img
               src={data?.image}
               alt="banner"
-              className="w-full h-[23rem] mt-[-3rem] rounded-md shadow-md"
+              className="w-full h-[21] sm:h-[25rem] mt-[-3rem] rounded-md shadow-md"
             />
             <div className="blogdetail-content1 mt-[-2rem]" data-aos="fade-up">
               <div

@@ -7,12 +7,11 @@ import { useNavigate } from "react-router-dom";
 export default function Section2() {
   const { theme } = useTheme();
   const navigate = useNavigate();
-  
 
   return (
     <div className="relative min-h-[90vh] px-4">
       <h1
-        className={`text-center py-4 text-3xl sm:text-4xl font-semibold ${
+        className={`text-center heading py-4 text-3xl sm:text-4xl font-semibold ${
           theme === "dark" ? "text-white" : " text-black"
         } `}
       >
@@ -37,45 +36,50 @@ export default function Section2() {
       {/*  */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-4 py-4  mt-4 ">
         <div className="">
-          <img src="/about2.png" alt="about" className="" />
+          <img
+            src="/about5.jpg"
+            alt="about"
+            className="w-full h-full rounded-lg"
+          />
         </div>
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col heading gap-4">
           <h1
             className={`text-start text-3xl font-semibold  ${
               theme === "dark" ? "text-white" : "text-black"
             }`}
           >
-            Every day is a fashion show & the world is your runway
+            Introduction
           </h1>
           <p
             className={`text-start text-[16px]   ${
               theme === "dark" ? "text-gray-200" : "text-gray-800"
             }`}
           >
-            Welcome to Robbito, where the art of tailoring is infused with
-            passion and precision. Our about section is adorned with icons that
-            symbolize our dedication to excellence. Robbito: Crafting Timeless
-            Styles with Passion 🧵.
+            We are taking dress making orders from around the world. Regardless
+            of the ethnicity of fashion our professionals are equipped to create
+            exactly as per your directions.
           </p>
           <p
             className={`text-start text-[16px] mt-4   ${
               theme === "dark" ? "text-gray-200" : "text-gray-800"
             }`}
           >
-            🎩 Explore the heritage of our brand, represented by the iconic
-            scissors, a testament to our commitment to craftsmanship. 🪡 Learn
-            about our bespoke process, where every stitch is infused with
-            creativity and care. 💼 Discover the story behind our emblematic
-            logo, a fusion of tradition and innovation.
+            At Robbito everything is done in-house. All required dress making
+            departments under one roof at our purpose built factory powered by
+            environmentally friendly renewable energy.
           </p>
           <p
             className={`text-start text-[16px] mt-4   ${
               theme === "dark" ? "text-gray-200" : "text-gray-800"
             }`}
           >
-            At Robbito, we blend classic elegance with contemporary flair,
-            ensuring that each garment is a masterpiece of style and
-            sophistication.
+            We cater to all three segments of dress making demands, that is; you
+            can either send us a picture of your reference article and we create
+            it exactly like that or you have conceptualised the dress in your
+            mind and you explain it to us to bring that dress to life, we
+            guarantee to delight you with the outcome or you can ask one of ours
+            highly creative designers to create a dress from scratch according
+            to your dress niche.
           </p>
 
           <div className="flex items-start mt-6 w-full ">
@@ -85,7 +89,7 @@ export default function Section2() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2  gap-8 sm:gap-4 py-4  mt-4 ">
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2  gap-8 sm:gap-4 py-4  mt-4 ">
         <div className="flex flex-col items-center gap-4">
           <h1
             className={`text-start text-3xl font-semibold  ${
@@ -139,7 +143,7 @@ export default function Section2() {
         <div className="">
           <img src="/About.png" alt="about" />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

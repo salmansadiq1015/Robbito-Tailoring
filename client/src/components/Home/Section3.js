@@ -73,7 +73,7 @@ const YourSliderComponent = () => {
   return (
     <div className="relative min-h-[80vh] ">
       <h1
-        className={`text-center py-4 text-3xl sm:text-4xl font-semibold ${
+        className={`text-center py-4 text-3xl sm:text-4xl heading font-semibold ${
           theme === "dark" ? "text-white" : " text-black"
         } `}
       >

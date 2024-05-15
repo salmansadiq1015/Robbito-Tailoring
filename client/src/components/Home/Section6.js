@@ -1,13 +1,14 @@
 import React from "react";
 import "./home.css";
 import { FaDraftingCompass } from "react-icons/fa";
-import { FaUserAlt } from "react-icons/fa";
-import { FaCartArrowDown } from "react-icons/fa";
-import { FaObjectGroup } from "react-icons/fa6";
-import { FaMarker } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa";
+import { IoLibrary } from "react-icons/io5";
 import { IoHome } from "react-icons/io5";
 import { useTheme } from "../../utils/ThemeContext";
 import { useNavigate } from "react-router-dom";
+import { GiTakeMyMoney } from "react-icons/gi";
+import { FaBuilding } from "react-icons/fa";
+import { FaShop } from "react-icons/fa6";
 
 export default function Section6() {
   const { theme } = useTheme();
@@ -28,7 +29,7 @@ export default function Section6() {
               SECURITY - RELIABILITY - INNOVATION
             </span>
             <h1
-              className=" text-3xl sm:text-4xl font-bold  w-full"
+              className=" text-3xl sm:text-4xl font-bold heading  w-full"
               style={{ textShadow: "-1px 1px 0px #888" }}
             >
               Why Choose Robbito?
@@ -56,18 +57,19 @@ export default function Section6() {
             shadow-lg cursor-pointer flex flex-col gap-8 items-center justify-center box1`}
           >
             <div className="section5-icon">
-              <FaDraftingCompass />
+              <GiTakeMyMoney className="" />
             </div>
             <h3 className="text-2xl text-center font-semibold">
-              AMERICAN MEASURING TOOLS TO ENSURE PERFECT FIT
+              Easy payments checkout utility
             </h3>
             <p
               className={`text-base ${
                 theme === "dark" ? "text-gray-300" : "text-gray-700"
               } text-justify `}
             >
-              We use American Measuring tools to take your perfect measurements
-              to give you a perfect fit.
+              With our convenient payment gateway checkout you can pay through
+              your credit/debit card from anywhere in the world all through a
+              safe and seamless process
             </p>
             <span className="w-[10rem] h-[2px] rounded-md"></span>
           </div>
@@ -79,20 +81,23 @@ export default function Section6() {
               theme === "dark" ? "bg-gray-900" : "bg-gray-100"
             } rounded-md py-[1.5rem] px-[1rem]
             shadow-lg cursor-pointer flex flex-col gap-8 items-center justify-center box1`}
+            onClick={() => navigate("/bjtextiles.com")}
           >
             <div className="section5-icon2">
-              <FaUserAlt />
+              <FaBuilding />
             </div>
             <h3 className="text-2xl text-center font-semibold">
-              UNIQUE PATTREN IS MADE BASED ON YOUR BODY TYPE
+              Robbito is a product of BJ Textiles (Pvt) Limited.
             </h3>
             <p
               className={`text-base ${
                 theme === "dark" ? "text-gray-300" : "text-gray-700"
               } text-justify `}
             >
-              Individual unique pattern is made for you based on your
-              measurements and posture.
+              Customised stitching division of BJ Textiles (Pvt) Limited. We
+              felt that there is a vast vacuum in the market where the client
+              should be facilitated to directly get their dress made from a
+              Textile manufacturer
             </p>
             <span className="w-[10rem] h-[2px] rounded-md"></span>
           </div>
@@ -104,18 +109,19 @@ export default function Section6() {
             shadow-lg cursor-pointer flex flex-col gap-8 items-center justify-center box1`}
           >
             <div className="section5-icon3">
-              <FaCartArrowDown />
+              <FaUsers />
             </div>
             <h3 className="text-2xl text-center  font-semibold">
-              EASY TO PLACE FUTURE ORDERS
+              User friendly process
             </h3>
             <p
               className={`text-base ${
                 theme === "dark" ? "text-gray-300" : "text-gray-700"
               } text-justify `}
             >
-              Your pattern is saved in our computerised system so that you can
-              easily place orders in future and receive consistent good fit.
+              Robbito values ease of interacting for our clients. Our clients
+              can initiate an order just by clicking on our WhatsApp link and
+              get connected instantly to our agent.
             </p>
             <span className="w-[10rem] h-[2px] rounded-md"></span>
           </div>
@@ -127,18 +133,21 @@ export default function Section6() {
             shadow-lg cursor-pointer flex flex-col gap-8 items-center justify-center box1`}
           >
             <div className="section5-icon4">
-              <FaObjectGroup color="purple" size="50" />
+              <IoHome color="purple" size="50" />
             </div>
             <h3 className="text-2xl text-center  font-semibold">
-              GERMAN FUSING IS USED TO AVOID BUBBLES ON CUFFS & COLLARS
+              In-house couture worshop
             </h3>
             <p
               className={`text-base ${
                 theme === "dark" ? "text-gray-300" : "text-gray-700"
               } text-justify `}
             >
-              We use German Fusing for softness durability . We have a state of
-              the art fusing plant to avoid bubbling in collars & cuffs.
+              Not only do we have all dress manufacturing departments under one
+              roof including cutting, stitching, printing, dyeing and embroidery
+              but we also have an in-house couture workshop where our highly
+              skilled couture work and block print artists work round the clock
+              in shifts to create your masterpieces.
             </p>
             <span className="w-[10rem] h-[2px] rounded-md"></span>
           </div>
@@ -150,18 +159,18 @@ export default function Section6() {
             shadow-lg cursor-pointer flex flex-col gap-8 items-center justify-center box1`}
           >
             <div className="section5-icon5">
-              <FaMarker color="yellow" size="50" />
+              <FaShop color="yellow" size="50" />
             </div>
             <h3 className="text-2xl text-center  font-semibold">
-              SINGLE NEEDLE TAILORING
+              In-house fabric inventory
             </h3>
             <p
               className={`text-base ${
                 theme === "dark" ? "text-gray-300" : "text-gray-700"
               } text-justify `}
             >
-              We use high international standards of 19-20 stitches per inch (
-              spi )to create smooth and durable seams.
+              Our manufacturing facility houses a vast variety of fabrics so
+              that work starts on your dress the moment the order is finalised.
             </p>
             <span className="w-[10rem] h-[2px] rounded-md"></span>
           </div>
@@ -174,18 +183,18 @@ export default function Section6() {
             shadow-lg cursor-pointer flex flex-col gap-8 items-center justify-center box1`}
           >
             <div className="section5-icon6">
-              <IoHome color="green" size="50" />
+              <IoLibrary color="green" size="50" />
             </div>
             <h3 className="text-2xl text-center  font-semibold">
-              HOME / OFFICE SERVICE
+              Accessories Library
             </h3>
             <p
               className={`text-base ${
                 theme === "dark" ? "text-gray-300" : "text-gray-700"
               } text-justify `}
             >
-              Our services are only a click or phone call away! We also provide
-              our services in the comfort of your home or office.
+              Accessories garnish the dress. We have an elaborate accessories
+              library for our designers to utilise while working on your dress.
             </p>
             <span className="w-[10rem] h-[2px] rounded-md"></span>
           </div>
