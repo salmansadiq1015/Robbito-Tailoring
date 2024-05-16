@@ -19,6 +19,7 @@ export default function GalleryModal({
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
+  const [categories, setCategories] = useState([]);
 
   //----------Banner Image------->
   const postLogo = (image) => {
@@ -124,6 +125,26 @@ export default function GalleryModal({
     //eslint-disable-next-line
   }, [serviceId]);
 
+  // Get ALl Categories
+  const getAllCategories = async () => {
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/v1/gallery/get/category`
+      );
+      if (data?.success) {
+        setCategories(data?.categories);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response?.data?.message);
+    }
+  };
+
+  useEffect(() => {
+    getAllCategories();
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <div
       className={`py-4 max-h-[98vh] px-4 rounded-lg shadow-md  message overflow-scroll w-[98%] sm:w-[50%] md:[80%] relative  ${
@@ -186,12 +207,10 @@ export default function GalleryModal({
                 }`}
               >
                 <option value="">Select Category</option>
-                <option value="man shirt">Man Shirts</option>
-                <option value="winter cloth">Winter Cloth</option>
-                <option value="model design">Model Design</option>
-                <option value="man cloth">Man Cloth</option>
-                <option value="girls cloth">Girls Cloth</option>
-                <option value="fabrics">Fabrics</option>
+                {categories &&
+                  categories.map((c) => (
+                    <option value={c.name}>{c.name}</option>
+                  ))}
               </select>
             </div>
             {/* Shot Desc */}

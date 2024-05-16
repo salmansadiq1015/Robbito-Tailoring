@@ -42,9 +42,9 @@ export default function Section2() {
             className="w-full h-full rounded-lg"
           />
         </div>
-        <div className="flex flex-col heading gap-4">
+        <div className="flex flex-col  gap-4">
           <h1
-            className={`text-start text-3xl font-semibold  ${
+            className={`text-start text-3xl heading font-semibold  ${
               theme === "dark" ? "text-white" : "text-black"
             }`}
           >

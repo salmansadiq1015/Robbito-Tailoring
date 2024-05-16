@@ -7,11 +7,13 @@ import { HiPlus } from "react-icons/hi";
 import { IoMdAddCircleOutline, IoMdEye, IoMdEyeOff } from "react-icons/io";
 import Loader from "../../utils/Loader";
 import AdminLayout from "../../components/admin/AdminLayout";
-// import { GrUpdate } from "react-icons/gr";
 import { useTheme } from "../../utils/ThemeContext";
 import { TbLoader2, TbLoader3 } from "react-icons/tb";
 import { useAuth } from "../../utils/authContext";
 import { useNavigate } from "react-router-dom";
+import { MdDelete } from "react-icons/md";
+import { MdUpdate } from "react-icons/md";
+import { IoClose } from "react-icons/io5";
 
 export default function LayoutSetting() {
   const [loading, setLoading] = useState(false);
@@ -31,6 +33,9 @@ export default function LayoutSetting() {
   const [isShow, setIsShow] = useState(false);
   const { auth } = useAuth();
   const navigate = useNavigate();
+  const [categoryName, setCategoryName] = useState("");
+  const [categoryId, setCategoryId] = useState("");
+  const [categories, setCategories] = useState([]);
 
   // Get FAQ
   const getFAQ = async () => {
@@ -39,7 +44,6 @@ export default function LayoutSetting() {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/v1/layout/get/layout/FAQ`
       );
-      console.log(data);
       setFaqData(data?.layoutData?.faq);
       setLoading(false);
     } catch (error) {
@@ -117,34 +121,6 @@ export default function LayoutSetting() {
     setFaqData([...faqData, { question: "", answer: "" }]);
   };
 
-  // Logo Handle
-
-  // const handleFileChange = (event) => {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       setImageUrl(reader.result);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
-
-  // Get Logo
-  // const getLogo = async () => {
-  //   try {
-  //     const { data } = await axios.get(
-  //       `${process.env.REACT_APP_API_URL}/api/v1/layout/get-layouts/Logo`
-  //     );
-  //     setLogo(data?.layoutData?.logo);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getLogo();
-  // }, []);
-
   // Update Footer
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -157,7 +133,7 @@ export default function LayoutSetting() {
           footer: { name, email, address, phone, telephone },
         }
       );
-      if (data.success) {
+      if (data?.success) {
         getFooter();
         toast.success("Information updated!");
         setIsLoading(false);
@@ -175,14 +151,14 @@ export default function LayoutSetting() {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/v1/user/get/user/${auth.user._id}`
       );
-      if (data.success) {
+      if (data?.success) {
         setLoading(false);
         setEmail1(data?.user?.email);
       }
     } catch (error) {
       console.log(error);
       setLoading(false);
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message);
     }
   };
 
@@ -212,25 +188,99 @@ export default function LayoutSetting() {
     }
   };
 
-  // Update Logo
-  // const updateLogo = async () => {
-  //   try {
-  //     const { data } = await axios.put(
-  //       `${process.env.REACT_APP_API_URL}/api/v1/layout/update-layouts`,
-  //       {
-  //         type: "Logo",
-  //         logoImage: imageUrl,
-  //       }
-  //     );
-  //     if (data?.success) {
-  //       getLogo();
-  //       toast.success("Logo Updated successfully.");
-  //       setImageUrl(null);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  // Get ALl Categories
+  const getAllCategories = async () => {
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/v1/gallery/get/category`
+      );
+      if (data?.success) {
+        setCategories(data?.categories);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response?.data?.message);
+    }
+  };
+
+  useEffect(() => {
+    getAllCategories();
+    //eslint-disable-next-line
+  }, []);
+
+  // Set Single Category
+  const getSingleCategories = async (id) => {
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/v1/gallery/get/single/category/${id}`
+      );
+
+      setCategoryName(data?.catrgory?.name);
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.response?.data?.message);
+    }
+  };
+
+  // Create Category
+  const handleCategory = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/v1/gallery/create/category`,
+        { name: categoryName }
+      );
+      if (data.success) {
+        setIsLoading(false);
+        setCategoryName("");
+        getAllCategories();
+
+        toast.success("Category added successfully!");
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+      toast.error(error.response.data.message);
+    }
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const { data } = await axios.patch(
+        `${process.env.REACT_APP_API_URL}/api/v1/gallery/update/category/${categoryId}`,
+        { name: categoryName }
+      );
+      if (data.success) {
+        setIsLoading(false);
+        getAllCategories();
+        setCategoryId("");
+        setCategoryName("");
+        toast.success("Category updated!");
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+      toast.error(error.response.data.message);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const { data } = await axios.delete(
+        `${process.env.REACT_APP_API_URL}/api/v1/gallery/delete/category/${id}`
+      );
+      if (data.success) {
+        getAllCategories();
+        toast.success("Category deleted!");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  };
   return (
     <AdminLayout>
       <div className="w-full h-[89%]  py-7 px-3 sm:px-5 overflow-y-auto message pb-[4rem]">
@@ -244,9 +294,9 @@ export default function LayoutSetting() {
         </h1>
         <hr className="my-3 h-[1px] bg-gray-300" />
         <div className="flex flex-col gap-4 mt-[2rem]">
-          <div className="flex items-center justify-center w-[18rem] h-[2.8rem] overflow-hidden border rounded-md shadow-md cursor-pointer ">
+          <div className="flex items-center justify-center w-fit h-[2.8rem] overflow-hidden border rounded-md shadow-md cursor-pointer ">
             <button
-              className={`w-full h-full border-r-[1px] border-gray-400  ${
+              className={`w-full h-full px-4 border-r-[1px] border-gray-400  ${
                 isActive === "faq"
                   ? "bg-yellow-700 text-white"
                   : "bg-yellow-600/20 "
@@ -256,7 +306,7 @@ export default function LayoutSetting() {
               FAQ
             </button>
             <button
-              className={`w-full h-full border-l-[1px] border-gray-400  ${
+              className={`w-full h-full px-4 border-l-[1px] border-gray-400  ${
                 isActive === "footer"
                   ? "bg-yellow-700 text-white"
                   : "bg-yellow-600/20 "
@@ -266,7 +316,7 @@ export default function LayoutSetting() {
               Footer
             </button>
             <button
-              className={`w-full h-full border-l-[1px] border-gray-400  ${
+              className={`w-full h-full px-4 border-l-[1px] border-gray-400  ${
                 isActive === "login"
                   ? "bg-yellow-700 text-white"
                   : "bg-yellow-600/20 "
@@ -274,6 +324,16 @@ export default function LayoutSetting() {
               onClick={() => setIsActive("login")}
             >
               Login
+            </button>
+            <button
+              className={`w-full h-full px-4 border-l-[1px] border-gray-400  ${
+                isActive === "category"
+                  ? "bg-yellow-700 text-white"
+                  : "bg-yellow-600/20 "
+              }   `}
+              onClick={() => setIsActive("category")}
+            >
+              Category
             </button>
           </div>
           {/* Logo Setting */}
@@ -471,6 +531,85 @@ export default function LayoutSetting() {
                         </button>
                       </div>
                     </form>
+                  </div>
+                </div>
+              ) : isActive === "category" ? (
+                <div className="">
+                  <h3 className="text-xl font-[600] ">Categories</h3>
+                  <hr className="my-3 h-[1px] bg-gray-300" />
+                  <div className="mt-2 flex items-center justify-center px-3">
+                    <form
+                      onSubmit={categoryId ? handleUpdate : handleCategory}
+                      className={` relative py-4 px-3 sm:px-4 rounded-md shadow-md flex flex-col gap-4 w-[30rem] min-w-[20rem] ${
+                        theme === "dark" ? "bg-gray-800" : "bg-white"
+                      } `}
+                    >
+                      {categoryId && (
+                        <span className="absolute top-2 right-2 cursor-pointer z-10">
+                          <IoClose
+                            className="h-5 w-5 cursor-pointer"
+                            onClick={() => {
+                              setCategoryName("");
+                              setCategoryId("");
+                            }}
+                          />
+                        </span>
+                      )}
+                      <h1 className="font-semibold text-xl">
+                        Create New Category
+                      </h1>
+                      <input
+                        type="text"
+                        placeholder="Category Name"
+                        value={categoryName}
+                        onChange={(e) => setCategoryName(e.target.value)}
+                        className={`border-2 w-full h-[2.8rem] px-3 cursor-pointer rounded-md shadow-md ${
+                          theme === "dark"
+                            ? "border-gray-300 bg-gray-700 text-white"
+                            : "border-gray-800 bg-gray-100 text-black"
+                        }`}
+                      />
+
+                      <div className="flex items-center justify-end">
+                        <button className="btn">
+                          {isloading ? (
+                            <TbLoader2 className="h-5 w-5 animate-spin" />
+                          ) : (
+                            <>{categoryId ? "Update" : "Create"}</>
+                          )}
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  <hr className="my-3 h-[1px] bg-gray-300" />
+                  <h3 className="text-xl font-[600]  ">All Categories</h3>
+                  <div className="flex items-center flex-wrap gap-6 mt-6">
+                    {categories &&
+                      categories.map((category) => (
+                        <div
+                          key={category._id}
+                          className={`flex items-center min-w-[10rem] gap-6 border shadow-md hover:shadow-lg cursor-pointer py-3 px-5 rounded-lg ${
+                            theme === "dark" ? "bg-gray-800" : "bg-gray-100"
+                          } `}
+                        >
+                          <span className="text-lg font-medium">
+                            {category?.name}
+                          </span>
+                          <div className="flex flex-col gap-4">
+                            <span
+                              onClick={() => {
+                                getSingleCategories(category._id);
+                                setCategoryId(category._id);
+                              }}
+                            >
+                              <MdUpdate className="h-5 w-5 text-yellow-500 hover:text-yellow-600 cursor-pointer" />
+                            </span>
+                            <span onClick={() => handleDelete(category._id)}>
+                              <MdDelete className="h-5 w-5 text-red-500 hover:text-red-600 cursor-pointer" />
+                            </span>
+                          </div>
+                        </div>
+                      ))}
                   </div>
                 </div>
               ) : (

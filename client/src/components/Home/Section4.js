@@ -94,11 +94,33 @@ import Loader from "../../utils/Loader";
 export default function Section4() {
   const { theme } = useTheme();
   const [active, setActive] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("all designs");
+  const [searchQuery, setSearchQuery] = useState("");
   const [filterData, setFilterData] = useState([]);
   const [visibleItems, setVisibleItems] = useState(6);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  // Get ALl Categories
+  const getAllCategories = async () => {
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/v1/gallery/get/category`
+      );
+      if (data?.success) {
+        setCategories(data?.categories);
+        setSearchQuery(data.categories[0].name);
+        setActive(0);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllCategories();
+    //eslint-disable-next-line
+  }, []);
 
   // Get ALl Services
   const getAllService = async () => {
@@ -126,7 +148,7 @@ export default function Section4() {
   // Handle Filter
 
   const filter = () => {
-    if (searchQuery === "all designs") {
+    if (searchQuery === "All Designs") {
       setFilterData(data);
     } else {
       const filteredData = data.filter(
@@ -145,6 +167,7 @@ export default function Section4() {
   const handleSeeMore = () => {
     setVisibleItems(visibleItems + 3);
   };
+
   return (
     <div className="w-full min-h-screen py-6 px-4">
       <div className="flex flex-col items-center justify-center">
@@ -173,111 +196,25 @@ export default function Section4() {
       </div>
       {/* Buttons */}
       <div className="flex items-center flex-wrap justify-center gap-4 sm:gap-6 mt-6">
-        <button
-          className={`uppercase font-medium cursor-pointer hover:scale-[1.02] transition-all duration-150 ${
-            active === 1
-              ? "text-yellow-700 hover:text-yellow-800"
-              : theme === "dark"
-              ? "text-gray-100"
-              : "text-black"
-          } `}
-          onClick={() => {
-            setActive(1);
-            setSearchQuery("all designs");
-          }}
-        >
-          All designs
-        </button>
-        <button
-          className={`uppercase font-medium cursor-pointer hover:scale-[1.02] transition-all duration-150 ${
-            active === 2
-              ? "text-yellow-700 hover:text-yellow-800"
-              : theme === "dark"
-              ? "text-gray-100"
-              : "text-black"
-          } `}
-          onClick={() => {
-            setActive(2);
-            setSearchQuery("mens coat");
-          }}
-        >
-          Mens Coat
-        </button>
-        <button
-          className={`uppercase font-medium cursor-pointer hover:scale-[1.02] transition-all duration-150 ${
-            active === 3
-              ? "text-yellow-700 hover:text-yellow-800"
-              : theme === "dark"
-              ? "text-gray-100"
-              : "text-black"
-          } `}
-          onClick={() => {
-            setActive(3);
-            setSearchQuery("fabrics");
-          }}
-        >
-          Fabrics
-        </button>
-        <button
-          className={`uppercase font-medium cursor-pointer hover:scale-[1.02] transition-all duration-150 ${
-            active === 4
-              ? "text-yellow-700 hover:text-yellow-800"
-              : theme === "dark"
-              ? "text-gray-100"
-              : "text-black"
-          } `}
-          onClick={() => {
-            setActive(4);
-            setSearchQuery("man shirt");
-          }}
-        >
-          Mens Shirt
-        </button>
-        <button
-          className={`uppercase font-medium cursor-pointer hover:scale-[1.02] transition-all duration-150 ${
-            active === 5
-              ? "text-yellow-700 hover:text-yellow-800"
-              : theme === "dark"
-              ? "text-gray-100"
-              : "text-black"
-          } `}
-          onClick={() => {
-            setActive(5);
-            setSearchQuery("girls cloth");
-          }}
-        >
-          Girls Cloths
-        </button>
-        <button
-          className={`uppercase font-medium cursor-pointer hover:scale-[1.02] transition-all duration-150 ${
-            active === 6
-              ? "text-yellow-700 hover:text-yellow-800"
-              : theme === "dark"
-              ? "text-gray-100"
-              : "text-black"
-          } `}
-          onClick={() => {
-            setActive(6);
-            setSearchQuery("model design");
-          }}
-        >
-          Model dress
-        </button>
-        <button
-          className={`uppercase font-medium cursor-pointer hover:scale-[1.02] transition-all duration-150 ${
-            active === 7
-              ? "text-yellow-700 hover:text-yellow-800"
-              : theme === "dark"
-              ? "text-gray-100"
-              : "text-black"
-          } `}
-          onClick={() => {
-            setActive(7);
-            setSearchQuery("winter cloth");
-          }}
-        >
-          Winter Cloth
-        </button>
+        {categories &&
+          categories.map((c, i) => (
+            <button
+              key={c._id}
+              className={`uppercase font-medium cursor-pointer hover:scale-[1.02] transition-all duration-150 ${
+                active === i
+                  ? "text-yellow-700 hover:text-yellow-800"
+                  : theme === "dark"
+                  ? "text-gray-100"
+                  : "text-black"
+              } `}
+              onClick={() => {
+                setActive(i);
+                setSearchQuery(c?.name);
+              }}
+            >
+              {c?.name}
+            </button>
+          ))}
       </div>
       {/* Data */}
       {isLoading ? (

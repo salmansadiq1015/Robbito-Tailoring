@@ -171,8 +171,8 @@ export default function Footer() {
               theme === "dark" ? "text-gray-200" : " text-gray-500"
             } `}
           >
-            Transform your look with Robbito: Bespoke Tailoring done to
-            perfection by offering in depth craftsmanship.
+            Bespoke Tailoring done to perfection by offering in depth
+            craftsmanship.
           </span>
 
           <div className="flex items-center gap-6 mt-6">
