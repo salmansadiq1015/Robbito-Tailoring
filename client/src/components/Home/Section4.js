@@ -131,8 +131,8 @@ export default function Section4() {
       );
 
       if (data.success) {
-        console.log("Gallery:", data.gallery);
         setData(data.gallery);
+        setFilterData(data.gallery);
         setIsLoading(false);
       }
     } catch (error) {
@@ -236,19 +236,32 @@ export default function Section4() {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-8 px-1 sm:px-8">
-              {filterData.slice(0, visibleItems).map((item) => (
-                <div className="" key={item.id}>
-                  <div className="relative h-[23rem] sm:h-[26rem] object-fill w-full overflow-hidden shadow-md rounded-md">
-                    <img
-                      src={item?.image}
-                      alt="designs"
-                      className=" shadow-md rounded-md w-full h-full hover:scale-[1.07] transition-all duration-300  hover:shadow-gray-500"
-                    />
-                  </div>
+            <>
+              {filterData.length === 0 ? (
+                <div className="flex items-center min-h-[30rem] flex-col  justify-center w-full h-full">
+                  <img
+                    src="/empty.png"
+                    alt="empty"
+                    className="h-[15rem] w-[15rem]"
+                  />
+                  <span className="text-xl font-semibold">No data found!</span>
                 </div>
-              ))}
-            </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-8 px-1 sm:px-8">
+                  {filterData.slice(0, visibleItems).map((item) => (
+                    <div className="" key={item.id}>
+                      <div className="relative h-[23rem] sm:h-[26rem] object-fill w-full overflow-hidden shadow-md rounded-md">
+                        <img
+                          src={item?.image}
+                          alt="designs"
+                          className=" shadow-md rounded-md w-full h-full hover:scale-[1.07] transition-all duration-300  hover:shadow-gray-500"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </>
       )}

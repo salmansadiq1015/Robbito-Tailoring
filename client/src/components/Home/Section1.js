@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function Section1() {
   const navigate = useNavigate();
   return (
-    <div className={`w-full min-h-[90vh]`}>
+    <div className={`w-full h-[80vh] sm:min-h-[90vh]`}>
       <Carousel
         infiniteLoop={true}
         autoPlay={true}

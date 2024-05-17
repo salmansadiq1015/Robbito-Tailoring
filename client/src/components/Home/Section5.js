@@ -31,14 +31,15 @@ export default function Section5() {
           />
         </div>
         <div className="flex flex-col   gap-6 z-10 relative ">
-          <h2
+          {/* <h2
             className={` text-2xl sm:text-4xl font-semibold ${
               theme === "dark" ? "text-white" : "text-black"
             }  `}
           >
-            As a tailiaring service we take some special order for covering the
-            events and cultural function.
-          </h2>
+            We make your dream dress in an unbelievable budget That’s what makes
+            us stand out from other market participants and that’s what’s our
+            unique selling point.
+          </h2> */}
           <p
             className={`text-[16] ${
               theme === "dark" ? " text-gray-200" : "text-gray-700"
@@ -53,12 +54,11 @@ export default function Section5() {
               theme === "dark" ? " text-gray-200" : "text-gray-700"
             }`}
           >
-            <b>Explore the heritage:</b> It’s not just quality delivered within
-            a sharp deadline but we also ensure the most competitive price
-            quotes. It always feels better when your favourite dress has been
-            easy on the pocket as well.
+            It’s not just quality delivered within a sharp deadline but we also
+            ensure the most competitive price quotes. It always feels better
+            when your favourite dress has been easy on the pocket as well.
           </p>
-          <p
+          {/* <p
             className={`text-[16] mt-2 ${
               theme === "dark" ? " text-gray-200" : "text-gray-700"
             }`}
@@ -67,7 +67,7 @@ export default function Section5() {
             contemporary flair. Our about section is a testament to our
             dedication, adorned with symbols reflecting our passion for the art
             of tailoring.
-          </p>
+          </p> */}
           <div className="">
             <button className="btn" onClick={() => navigate("/contact")}>
               {" "}

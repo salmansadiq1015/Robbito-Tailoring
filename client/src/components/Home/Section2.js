@@ -37,7 +37,7 @@ export default function Section2() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-4 py-4  mt-4 ">
         <div className="">
           <img
-            src="/about5.jpg"
+            src="/data/intro image.png"
             alt="about"
             className="w-full h-full rounded-lg"
           />
@@ -57,29 +57,29 @@ export default function Section2() {
           >
             We are taking dress making orders from around the world. Regardless
             of the ethnicity of fashion our professionals are equipped to create
-            exactly as per your directions.
+            exactly as per your directions. At Robbito everything is done
+            in-house.
           </p>
           <p
             className={`text-start text-[16px] mt-4   ${
               theme === "dark" ? "text-gray-200" : "text-gray-800"
             }`}
           >
-            At Robbito everything is done in-house. All required dress making
-            departments under one roof at our purpose built factory powered by
-            environmentally friendly renewable energy.
+            All required dress making departments under one roof at our purpose
+            built factory powered by environmentally friendly renewable energy.{" "}
+            <br /> We cater to all three segments of dress making demands, that
+            is; you can either send us a picture of your reference article and
+            we create it exactly like that or you have conceptualised the dress
+            in your mind and you explain it to us to bring that dress to life,
           </p>
           <p
             className={`text-start text-[16px] mt-4   ${
               theme === "dark" ? "text-gray-200" : "text-gray-800"
             }`}
           >
-            We cater to all three segments of dress making demands, that is; you
-            can either send us a picture of your reference article and we create
-            it exactly like that or you have conceptualised the dress in your
-            mind and you explain it to us to bring that dress to life, we
-            guarantee to delight you with the outcome or you can ask one of ours
-            highly creative designers to create a dress from scratch according
-            to your dress niche.
+            we guarantee to delight you with the outcome or you can ask one of
+            ours highly creative designers to create a dress from scratch
+            according to your dress niche.
           </p>
 
           <div className="flex items-start mt-6 w-full ">

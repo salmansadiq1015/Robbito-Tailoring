@@ -88,7 +88,9 @@ export default function Footer() {
             <ul className="flex flex-col gap-[0rem] ">
               {/*  */}
               <li
-                className={`flex items-center py-3 px-4 rounded-lg gap-[1rem] ${
+                className={`flex items-center ${
+                  !footerData?.name && "hidden"
+                }  py-3 px-4 rounded-lg gap-[1rem] ${
                   theme === "dark"
                     ? "hover:bg-gray-900 "
                     : "hover:bg-yellow-800/10"
@@ -96,12 +98,14 @@ export default function Footer() {
               >
                 <FaUser />{" "}
                 <span className="text-[1rem] font-[500]">
-                  {footerData?.name ? footerData?.name : "N/A"}
+                  {footerData?.name}
                 </span>
               </li>
               {/*  */}
               <li
-                className={`flex items-center py-3 px-4 rounded-lg gap-[1rem] ${
+                className={`flex items-center ${
+                  !footerData?.email && "hidden"
+                }  py-3 px-4 rounded-lg gap-[1rem] ${
                   theme === "dark"
                     ? "hover:bg-gray-900 "
                     : "hover:bg-yellow-800/10"
@@ -109,12 +113,14 @@ export default function Footer() {
               >
                 <MdEmail />{" "}
                 <span className="text-[1rem] font-[500]">
-                  {footerData?.email ? footerData?.email : "N/A"}
+                  {footerData?.email}
                 </span>
               </li>
               {/*  */}
               <li
-                className={`flex items-center py-3 px-4 rounded-lg gap-[1rem] ${
+                className={`flex items-center py-3 px-4 ${
+                  !footerData?.address && "hidden"
+                } rounded-lg gap-[1rem] ${
                   theme === "dark"
                     ? "hover:bg-gray-900 "
                     : "hover:bg-yellow-800/10"
@@ -122,12 +128,14 @@ export default function Footer() {
               >
                 <FaLocationDot />{" "}
                 <span className="text-[1rem] font-[500]">
-                  {footerData?.address ? footerData?.address : "N/A"}
+                  {footerData?.address}
                 </span>
               </li>
               {/*  */}
               <li
-                className={`flex items-center py-3 px-4 rounded-lg gap-[1rem] ${
+                className={`flex items-center py-3  ${
+                  !footerData?.phone && "hidden"
+                } px-4 rounded-lg gap-[1rem] ${
                   theme === "dark"
                     ? "hover:bg-gray-900 "
                     : "hover:bg-yellow-800/10"
@@ -135,12 +143,14 @@ export default function Footer() {
               >
                 <FaPhoneVolume />{" "}
                 <span className="text-[1rem] font-[500]">
-                  {footerData?.phone ? footerData?.phone : "N/A"}
+                  {footerData?.phone}
                 </span>
               </li>
               {/*  */}
               <li
-                className={`flex items-center py-3 px-4 rounded-lg gap-[1rem] ${
+                className={`flex items-center  ${
+                  !footerData?.telephone && "hidden"
+                } py-3 px-4 rounded-lg gap-[1rem] ${
                   theme === "dark"
                     ? "hover:bg-gray-900 "
                     : "hover:bg-yellow-800/10"
@@ -148,7 +158,7 @@ export default function Footer() {
               >
                 <MdOutlinePhoneAndroid />{" "}
                 <span className="text-[1rem] font-[500]">
-                  {footerData?.telephone ? footerData?.telephone : "N/A"}
+                  {footerData?.telephone}
                 </span>
               </li>
               {/*  */}
