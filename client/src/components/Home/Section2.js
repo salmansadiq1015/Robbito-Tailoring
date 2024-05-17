@@ -9,7 +9,7 @@ export default function Section2() {
   const navigate = useNavigate();
 
   return (
-    <div className="relative min-h-[90vh] px-4">
+    <div className="relative min-h-[90vh] px-4 mt-[4rem]">
       <h1
         className={`text-center heading py-4 text-3xl sm:text-4xl font-semibold ${
           theme === "dark" ? "text-white" : " text-black"
